@@ -33,6 +33,12 @@ pipeline{
             }
         } 
         
+        Stage ('Quality Gate'){
+            steps{
+                waitForQualityGate: abortPipeline true
+            }
+        }
+        
         stage('Deploy'){
             when{
                 expression {params.Deploy}
